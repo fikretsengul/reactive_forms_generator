@@ -1,3 +1,7 @@
+## [7.0.0-beta5]
+
+* Updated generator to use `onPopInvokedWithResult` instead of deprecated `onPopInvoked` to align with reactive_forms 18.0.0
+
 ## [7.0.0-beta4]
 
 * bugfix

@@ -8,13 +8,11 @@ class ReactiveFormBuilder {
 
   ReactiveFormBuilder(this.reactiveForm);
 
-  String get _baseName =>
-      reactiveForm.reactiveInheritedStreamer.formGenerator.className;
+  String get _baseName => reactiveForm.reactiveInheritedStreamer.formGenerator.className;
 
   String get _log => reactiveForm.reactiveInheritedStreamer.formGenerator.log;
 
-  ClassElement get _element =>
-      reactiveForm.reactiveInheritedStreamer.formGenerator.element;
+  ClassElement get _element => reactiveForm.reactiveInheritedStreamer.formGenerator.element;
 
   String get className => '${_baseName}Builder';
 
@@ -52,8 +50,7 @@ class ReactiveFormBuilder {
                   ..name = 'model'
                   ..named = true
                   ..toThis = true
-                  ..required = !reactiveForm.reactiveInheritedStreamer
-                      .formGenerator.element.isNullable,
+                  ..required = !reactiveForm.reactiveInheritedStreamer.formGenerator.element.isNullable,
               ),
               Parameter(
                 (b) => b
@@ -69,7 +66,7 @@ class ReactiveFormBuilder {
               ),
               Parameter(
                 (b) => b
-                  ..name = 'onPopInvoked'
+                  ..name = 'onPopInvokedWithResult'
                   ..named = true
                   ..toThis = true,
               ),
@@ -115,9 +112,8 @@ class ReactiveFormBuilder {
         ),
         Field(
           (b) => b
-            ..name = 'onPopInvoked'
-            ..type = const Reference(
-                'void Function(FormGroup formGroup, bool didPop)?')
+            ..name = 'onPopInvokedWithResult'
+            ..type = const Reference('void Function(FormGroup formGroup, bool didPop)?')
             ..modifier = FieldModifier.final$,
         ),
         Field(
@@ -160,9 +156,9 @@ class ReactiveFormBuilder {
                 if (_formModel.form.disabled) {
                   _formModel.form.markAsDisabled();
                 }
-            
+
                 widget.initState?.call(context, _formModel);
-                
+
                 _logSubscription = $_log.onRecord.listen((LogRecord e) {
                   // use `dumpErrorToConsole` for severe messages to ensure that severe
                   // exceptions are formatted consistently with other Flutter examples and
@@ -190,8 +186,8 @@ class ReactiveFormBuilder {
                     );
                   }
                 });
-                
-                super.initState();              
+
+                super.initState();
               '''),
         ),
         Method(
@@ -211,7 +207,7 @@ class ReactiveFormBuilder {
                 if (widget.model != oldWidget.model) {
                   _formModel.updateValue(widget.model);
                 }
-                
+
                 super.didUpdateWidget(oldWidget);
               '''),
         ),
@@ -244,11 +240,11 @@ class ReactiveFormBuilder {
                   key: ObjectKey(_formModel),
                   form: _formModel,
                   // canPop: widget.canPop,
-                  // onPopInvoked: widget.onPopInvoked,
+                  // onPopInvokedWithResult: widget.onPopInvokedWithResult,
                   child: ReactiveFormBuilder(
                     form: () => _formModel.form,
                     canPop: widget.canPop,
-                    onPopInvoked: widget.onPopInvoked,
+                    onPopInvokedWithResult: widget.onPopInvokedWithResult,
                     builder: (context, formGroup, child) => widget.builder(context, _formModel, widget.child),
                     child: widget.child,
                   ),
@@ -270,8 +266,7 @@ class ReactiveFormBuilder {
                   ..name = '_formModel'
                   ..late = true
                   ..type = Reference(
-                    reactiveForm
-                        .reactiveInheritedStreamer.formGenerator.classNameFull,
+                    reactiveForm.reactiveInheritedStreamer.formGenerator.classNameFull,
                   ),
               ),
               Field(
