@@ -113,7 +113,7 @@ class ReactiveFormBuilder {
         Field(
           (b) => b
             ..name = 'onPopInvokedWithResult'
-            ..type = const Reference('void Function(FormGroup formGroup, bool didPop)?')
+            ..type = const Reference('void Function(FormGroup formGroup, bool didPop, dynamic result)?')
             ..modifier = FieldModifier.final$,
         ),
         Field(

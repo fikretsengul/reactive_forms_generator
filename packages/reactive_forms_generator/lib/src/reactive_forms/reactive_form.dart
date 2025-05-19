@@ -90,7 +90,7 @@ class ReactiveForm {
               (b) => b
                 ..name = 'onPopInvokedWithResult'
                 ..modifier = FieldModifier.final$
-                ..type = const Reference('void Function(FormGroup formGroup, bool didPop)?'),
+                ..type = const Reference('void Function(FormGroup formGroup, bool didPop, dynamic result)?'),
             ),
           ])
           ..methods.addAll(

@@ -1,6 +1,12 @@
+## [7.0.0-beta6]
+
+* Updated generator to use `onPopInvokedWithResult` instead of deprecated `onPopInvoked` to align with reactive_forms 18.0.0
+* Fixed function signature for `onPopInvokedWithResult` to include the third `result` parameter
+
 ## [7.0.0-beta5]
 
 * Updated generator to use `onPopInvokedWithResult` instead of deprecated `onPopInvoked` to align with reactive_forms 18.0.0
+* Fixed function signature for `onPopInvokedWithResult` to include the third `result` parameter
 
 ## [7.0.0-beta4]
 
